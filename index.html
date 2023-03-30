@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+        </tr>
+        <tr>
+            <!-- name username email  -->
+            <td class="id"></td>
+            <td class="name"></td>
+            <td class="username"></td>
+            <td class="email"></td>
+
+        </tr>
+    
+    
+    
+    <script>
+
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+            console.log(element);
+            let newRow = document.createElement('tr');
+            let newIdCell = document.createElement('td');
+            let newNameCell = document.createElement('td');
+            let newUsernameCell = document.createElement('td');
+            let newEmailCell = document.createElement('td');
+            newIdCell.innerHTML = element.id;
+            newNameCell.innerHTML = element.name;
+            newUsernameCell.innerHTML = element.username;
+            newEmailCell.innerHTML = element.email;
+            newRow.appendChild(newIdCell);
+            newRow.appendChild(newNameCell);
+            newRow.appendChild(newUsernameCell);
+            newRow.appendChild(newEmailCell);
+            document.querySelector('table').appendChild(newRow);
+        }
+    })
+    .catch(error => console.log(error));
+
+      
+
+
+  
+    </script>
+</body>
+</html>
